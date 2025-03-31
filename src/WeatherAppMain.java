@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class WeatherAppMain {
     public static void main(String[] args) {
         LocationService locationService = new LocationService();
