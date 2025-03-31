@@ -32,7 +32,7 @@ public class WeatherService {
 
             return new WeatherData(temp, condition, humidity, windSpeed);
         } catch (Exception e) {
-            System.out.println("Fehler beim Abrufen der Wetterdaten: " + e.getMessage());
+            System.out.println("Fehler beim Abrufen der Wetterdaten oder Ort nicht gefunden: " + e.getMessage());
             return new WeatherData(0, "Unknown", 0, 0);
         }
     }
