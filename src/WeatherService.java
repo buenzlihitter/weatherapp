@@ -24,15 +24,26 @@ public class WeatherService {
 
             String json = response.toString();
 
-            double temp = Double.parseDouble(extract(json, "\"temp\":", ","));
+            // Korrekte Umwandlung der Werte
+            double temp = parseDouble(extract(json, "\"temp\":", ","));
             String condition = extract(json, "\"main\":\"", "\"");
             int humidity = Integer.parseInt(extract(json, "\"humidity\":", ","));
-            double windSpeed = Double.parseDouble(extract(json, "\"speed\":", "\n"));
+            double windSpeed = parseDouble(extract(json, "\"speed\":", "\n"));
 
             return new WeatherData(temp, condition, humidity, windSpeed);
         } catch (Exception e) {
             System.out.println("Fehler beim Abrufen der Wetterdaten: " + e.getMessage());
             return new WeatherData(0, "Unknown", 0, 0);
+        }
+    }
+
+    // Verbesserte Methode zum Umwandeln von Strings in double, auch mit möglichen ungültigen Zeichen
+    private double parseDouble(String value) {
+        try {
+            value = value.replaceAll("[^\\d.-]", "");  // Entfernt alle unerwünschten Zeichen (z.B. "deg", "gust")
+            return Double.parseDouble(value);
+        } catch (NumberFormatException e) {
+            return 0.0;  // Falls ein Fehler auftritt, gib einen Standardwert zurück
         }
     }
 
