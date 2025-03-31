@@ -10,9 +10,9 @@ public class WeatherAppMain {
         WeatherData weather = weatherService.getWeather(location);
         String recommendation = recommender.recommend(weather);
 
-        System.out.println("Wetter für " + location + ":");
-        System.out.println("Temperatur: " + weather.getTemperature() + "°C");
-        System.out.println("Zustand: " + weather.getCondition());
-        System.out.println("Empfehlung: " + recommendation);
+        System.out.println("Weather in " + location + ":");
+        System.out.println("Temperature: " + weather.getTemperature() + "°C");
+        System.out.println("Condition: " + weather.getCondition());
+        System.out.println("You should wear " + recommendation);
     }
 }
