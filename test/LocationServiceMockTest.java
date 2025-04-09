@@ -18,4 +18,13 @@ public class LocationServiceMockTest {
 
         assertEquals("Baden", location);
     }
+
+    @Test
+    public void testLocationServiceForEmptyLocation() {
+        LocationServiceMock mockLocationService = new LocationServiceMock("");
+        String location = mockLocationService.getCurrentLocation();
+
+        assertEquals("", location);  // Erwartet leeren String als Rückgabe
+    }
+
 }

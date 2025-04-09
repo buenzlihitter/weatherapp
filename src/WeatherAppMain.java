@@ -15,4 +15,5 @@ public class WeatherAppMain {
         System.out.println("Condition: " + weather.getCondition());
         System.out.println("You should wear " + recommendation);
     }
+
 }
